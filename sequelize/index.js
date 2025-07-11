@@ -3,7 +3,7 @@ import { db,sequelize } from './connectdb/db.js';
 import studentRoutes from './routes/student.route.js';
 const app = express();
 const PORT = 3000;
-
+import './model/index.js'
 app.use(express.json());
 app.use('/students', studentRoutes);
 
