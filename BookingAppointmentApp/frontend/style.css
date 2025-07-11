@@ -1,0 +1,60 @@
+*{
+    background-color: lightblue;
+}
+
+h1{
+    color: navy;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-top: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.container {
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 30px 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 18px rgba(70, 130, 180, 0.12);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 6px;
+    color: #333;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+input, select, textarea {
+    padding: 8px 10px;
+    border: 1px solid #b0c4de;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: inherit;
+    background-color: #f8faff;
+    margin-bottom: 12px;
+    transition: border-color 0.2s;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #4682b4;
+    outline: none;
+}
+
+button, input[type="submit"] {
+    background-color: #4682b4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 0;
+    font-size: 1rem;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.2s;
+}
+
+button:hover, input[type="submit"]:hover {
+    background-color: #315a7c;
+}
