@@ -1,8 +1,11 @@
 import express from 'express';
 import { db,sequelize } from './connectdb/db.js';
-import students from './model/student.js';
+import studentRoutes from './routes/student.route.js';
 const app = express();
 const PORT = 3000;
+
+app.use(express.json());
+app.use('/students', studentRoutes);
 
 
 sequelize.sync().then(() => {
