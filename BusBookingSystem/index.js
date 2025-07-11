@@ -7,10 +7,9 @@ const port = 3000;
 
 app.use(express.json());
 app.use('/api/users', userRouter);
-app.use('/api/buses', busRouter);
-
+//app.use('/api/buses', busRouter);
 db().then(()=>{
-  app.listen(port, () => {
+  app.listen(port, () => { 
     console.log(`Server is running on http://localhost:${port}`);
   });
 })
