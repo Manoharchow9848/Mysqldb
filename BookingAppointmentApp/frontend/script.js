@@ -30,7 +30,8 @@ form.addEventListener("submit",async(e)=>{
         await axios.post(`${api}/add-user`,user);
         alert('user added')
     }
-    display()
+    resetForm();
+    display();
     } catch (error) {
         console.log(error);
         alert(error)
@@ -42,16 +43,17 @@ form.addEventListener("submit",async(e)=>{
 async function display(){
 
     try {
+        ul.innerHTML="";
         const list = await axios.get(`${api}/users`);
         const usersList = list.data;
-        
-        usersList.forEach((user)=>{
+         if (Array.isArray(usersList) && usersList.length > 0) {
+        usersList?.forEach((user)=>{
            const li = document.createElement("li");
             li.textContent=`${user.name} - ${user.email} ${user.phoneNumber}`
             const deletebtn = document.createElement("button");
             deletebtn.textContent="delete";
              deletebtn.style.backgroundColor = "red";
-              deletebtn.onclick = ()=>deleteUser(user.id);
+              deletebtn.onclick = ()=>deleteUser(user.id,deletebtn);
               li.appendChild(deletebtn);
               const editBtn = document.createElement("button");
               editBtn.textContent = "Edit";
@@ -61,6 +63,7 @@ async function display(){
                ul.appendChild(li);
 
         })
+    }
         
 
         
@@ -69,11 +72,19 @@ async function display(){
     }
 }
 
-async function deleteUser(id){
+ function deleteUser(id,deletebtn){
     try {
-        await axios.delete(`${api}/delete/${id}`);
-        display()
-        alert('user deleted')
+        deletebtn.innerHTML="deleting"
+      axios.delete(`${api}/delete/${id}`);
+      
+
+       
+        if (currentEditId === id) {
+      resetForm();
+    }
+
+     display()
+       
     } catch (error) {
         alert(error)
     }
@@ -89,5 +100,5 @@ async function editUser(user) {
 function resetForm() {
   form.reset();
   currentEditId = null;
-  submitBtn.textContent = "Submit";
+  btn.textContent = "Submit";
 }
