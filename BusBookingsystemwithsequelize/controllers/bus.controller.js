@@ -1,4 +1,6 @@
+import Bookings from "../models/bookings.js";
 import Buses from "../models/bus.js";
+import User from "../models/user.js";
 import { Op } from 'sequelize';
 export const getAllBuses = async(req,res)=>{
     try {
@@ -28,3 +30,24 @@ export const createBus = async(req,res)=>{
         res.status(500).json({message:"Internal Server Error"})
     }
 }
+
+
+export const getBusBookingsWithUsers = async (req, res) => {
+  try {
+    const bookings = await Bookings.findAll({
+      where: { busId: req.params.id },
+      include: [
+        {
+          model: User,
+          attributes: ["name", "email"]
+        }
+      ],
+      attributes: ["id", "seatNumber"]
+    });
+
+    res.status(200).json(bookings);
+  } catch (error) {
+    console.error("Error fetching bookings:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
