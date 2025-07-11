@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <form id="expenseForm">
+      <label for="price">Selling Price </label>
+      <input
+        name="price"
+        type="number"
+        min="0"
+        id="price "
+        placeholder="Amount"
+      />
+
+      <label for="pname">Product Name</label>
+      <input type="text" id="pname" name="pname" placeholder="Product Name" />
+      <label>Choose a Category</label>
+      <select id="category" name="category">
+        <option value="food">Food</option>
+        <option value="electronics">Electronics</option>
+        <option value="skincare">Skincare</option>
+      </select>
+
+      <button id="submitBtn">Add Expense</button>
+    </form>
+    <h1 id="heading">Products</h1>
+
+    <h3>Electronic Items</h3>
+    <ul id="elecList"></ul>
+
+    <h3>Food Items</h3>
+    <ul id="foodList"></ul>
+
+    <h3>Skincare Items</h3>
+    <ul id="skinList"></ul>
+
+    <script  src="index.js"></script>
+  </body>
+</html>
