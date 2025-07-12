@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Attendance Manager</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="left">
+      <h2>Mark Attendance</h2>
+      <input type="date" id="datePicker" />
+      <button onclick="fetchAttendance()">Search</button>
+      <div id="attendanceForm"></div>
+      <button id="submitBtn" onclick="submitAttendance()" style="display: none;">Post Attendance</button>
+    </div>
+
+    <div class="right">
+      <h2>Attendance Report</h2>
+      <button onclick="toggleReport()">Get Report</button>
+      <div id="report" style="display: none;"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
