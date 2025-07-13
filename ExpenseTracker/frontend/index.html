@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome | Expense Tracker</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="landing-container">
+    <img src="https://cdn-icons-png.flaticon.com/512/833/833472.png" alt="App Logo" class="landing-logo" />
+    <h1>Expense Tracker</h1>
+    <p>Track your income & expenses easily and securely</p>
+    <div id="landing-buttons" class="landing-buttons">
+      <button onclick="redirectTo('login')">Login</button>
+      <button onclick="redirectTo('signup')">Sign Up</button>
+    </div>
+  </div>
+
+  <script>
+
+    if (localStorage.getItem("isLoggedIn") === "true") {
+        const div = document.getElementById('landing-buttons');
+        div.innerHTML="";
+        let btn  = document.createElement("button");
+        btn.onclick= () => redirectTo('dashboard');
+        btn.textContent="Dashboard"
+        div.appendChild(btn)
+
+    }
+
+    function redirectTo(page) {
+      window.location.href = `${page}.html`;
+    }
+  </script>
+
+</body>
+</html>
