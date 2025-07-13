@@ -1,6 +1,8 @@
 const form = document.getElementById("signupForm");
 const api = "http://localhost:3000/api/users/register";
-
+if (localStorage.getItem("isLoggedIn") === "true") {
+  window.location.href = "index.html";
+}
 form.addEventListener("submit",async(e)=>{
     e.preventDefault();
     const name = e.target.name.value;

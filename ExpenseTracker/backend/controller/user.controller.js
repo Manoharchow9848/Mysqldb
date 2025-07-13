@@ -1,4 +1,4 @@
-
+import bcrypt from 'bcryptjs';
 import User from "../model/user.js";
 
 export const createUser = async(req,res)=>{
@@ -16,7 +16,8 @@ export const createUser = async(req,res)=>{
         if (existing) {
     res.status(400).json({ message: "Email already exists" });
      }
-    let newuser =  await User.create({name,email,password});
+     let hashedPassword = bcrypt.hashSync(password,10);
+    let newuser =  await User.create({name,email,password:hashedPassword});
 
      res.status(200).json({message:"User Registered Successfully"})
     } catch (error) {
@@ -36,7 +37,10 @@ export const login = async(req,res)=>{
         if(!user){
             res.status(404).json({ message: "User not Found" });
         }
-        if(user.password !== password){
+        let compare =await bcrypt.compare(password,user.password);
+        
+        
+        if(!compare){
            res.status(401).json({ message: "Invalid Credintials" });
         }
 

@@ -1,5 +1,8 @@
 const form = document.getElementById("loginForm");
 const api = "http://localhost:3000/api/users/login";
+if (localStorage.getItem("isLoggedIn") === "true") {
+  window.location.href = "index.html";
+}
 form.addEventListener("submit",async(e)=>{
     e.preventDefault()
      const email = e.target.email.value;
